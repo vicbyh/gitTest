@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+ 	<title>Registrera konto</title>
+ 	<link rel="stylesheet" href="logreg.css">
+ 	<meta charset="UTF-8">
+ </head>
+ <body>
+		<img src="logregpics/logo.png" alt="logopic" id="logo">
+		<h1>Registrera konto</h1>
+			<form name="regForm" method="POST" action="reg.php">
+				<label for="name">Användarnamn</label>
+					<input type="text" placeholder="Välj ett användarnamn" name="alias">
+				<label for="mail">E-post</label>
+					<input type="text" placeholder="Skriv in din e-post" name="mail">	
+				<label for="pass">Lösenord</label>
+					<input type="password" placeholder="Välj ett lösenord" name="pass">	
+					<input type="submit" value="Registrera konto" id="registreraBtn">
+			</form>
+ </body>
+</html>

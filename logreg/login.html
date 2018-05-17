@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+ 	<title>Logga in</title>
+ 	<link rel="stylesheet" href="logreg.css">
+ 	<meta charset="UTF-8">
+ </head>
+ <body>
+		<img src="logregpics/logo.png" alt="logpic" id="logo">
+		<h1>Logga in</h1>
+		<form name="loginForm" method="POST" action="set.php">
+			<label for="mail">E-post</label>
+				<input type="text" placeholder="Vänligen skriv in din e-post" name="mail">	
+			<label for="pass">Lösenord</label>
+				<input type="password" placeholder="Vänligen skriv in ditt lösenord" name="pass">	
+				<input type="submit" value="Logga in!" id="loggainBtn">
+		</form>
+		<form name="noaccount" method="POST" action="registration.html">
+			<br><label for="noAcc">Inget konto?</label>
+				<br><input type="submit" value="Registrera här!" id="newUserBtn">
+		</form>
+ </body>
+</html>
