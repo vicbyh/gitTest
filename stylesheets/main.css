@@ -2,22 +2,25 @@ body
 {
 	background-color: white;
 }
+.bakrund
+{
+	background-image: src="Bilder/female-student.jpg"
+}
 div
 {
-	background-color: white;
 	color: white;
 	list-style-type: none;
-    margin: 0;
-    padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #0f3063;
 }
 
-li {
+li 
+{
     float: right;
 }
 
-li a {
+li a 
+{
     display: block;
     color: white;
     text-align: center;
@@ -25,14 +28,16 @@ li a {
     text-decoration: none;
 }
 
-li a:hover {
-    background-color:;
+li a:hover 
+{
+    background-color: #808080;
 }
 
 h1
 {
 	font-size: 100%;
 }
+
 .meny
 {
 	text-align: right;
@@ -40,16 +45,18 @@ h1
 	position: absolute;
     top: 50px;
     right: 50px;
-}
+} 
+
 .bakrund
 {
     width:750px;
     height:400px;
-    margin-right: 0px;
+    margin-right: 10px;
     float: right;
 }
 
 p
 {
 	font-size: 30px;
+	
 }
