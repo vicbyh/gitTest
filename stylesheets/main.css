@@ -1,11 +1,10 @@
 body
 {
-	background-color: white;
+    background-image: url(../Bilder/female-student.jpg);
+    background-size: 100% auto;
+    background-repeat: no-repeat;
 }
-.bakrund
-{
-	background-image: src="Bilder/female-student.jpg"
-}
+
 div
 {
 	color: white;
@@ -47,13 +46,7 @@ h1
     right: 50px;
 } 
 
-.bakrund
-{
-    width:750px;
-    height:400px;
-    margin-right: 10px;
-    float: right;
-}
+
 
 p
 {
