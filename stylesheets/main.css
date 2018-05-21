@@ -12,6 +12,18 @@ div
     overflow: hidden;
     background-color: transparent;
 }
+p
+{
+    color: white;
+    font-size: 23px;
+    position: absolute;
+    width: 50%;
+    height: 200 px;
+    left: 30%;
+    top: 60%;
+    margin-left: -25%;
+    margin-top: -250px; 
+}
 
 li 
 {
@@ -46,10 +58,6 @@ h1
     right: 50px;
 } 
 
-
-
-p
-{
 	font-size: 30px;
 	
 }
