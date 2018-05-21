@@ -1,0 +1,20 @@
+body
+{
+    background-image: url(../Bilder/students.jpeg);
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+}
+
+img{
+	background-color: white;
+	border-radius: 10px;
+}
+p
+{
+	background-color: white; 
+	color: black;
+    font-size: 20px;
+   height:700px;
+	width: 440px;
+	border-radius: 10px;
+}
