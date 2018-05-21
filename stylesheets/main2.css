@@ -2,7 +2,7 @@
 body {
   margin: 0;
   min-width: 300px;
-}
+ }
 
 /* Include the padding and border in an element's total width and height */
 * {
@@ -83,13 +83,19 @@ ul li.checked::before {
   color: white;
   text-align: center;
   font-family: helvetica;
-  font-size: 40px;
+  font-size: 25px;
 }
 
 
-.img{
+#logo{
 float: left;
-border-radius: 8px;
+width: 30;
+height: 40px;
+
+
+
+
+
 }
 
 /* Clear floats after the header */
