@@ -1,6 +1,8 @@
 .vertical-menu {
-    width: 200px;
-    height: 1000px;
+    position: absolute;
+    width: 250px;
+    top: 90px;
+    left:0px;
 }
 
 .vertical-menu a {
@@ -47,6 +49,12 @@ li a:hover {
 #logo {
 width: 100px;
 height: 75px;
+}
+
+#content {
+    position: relative;
+    left:242px;
+    top: 3px;
 }
 
 
