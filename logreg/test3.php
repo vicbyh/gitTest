@@ -39,13 +39,12 @@ $tasks = mysqli_query($db, "SELECT * FROM tasks");
 	<div class="sidenav">
   <a href="#about">Start</a>
   <a href="#services">Att göra-lista</a>
-  <a href="#clients">Schema</a>
+  <a href="#clients">Kalender</a>
   <a href="#contact">Nationsguiden</a>
   <a href="#contact">Mitt konto</a>
 </div>
-		<h1>Att göra-lista</h1>
 			<div class="heading">
-		<h2>To-do lista</h2>
+		<h2>Att göra-lista</h2>
 	</div>
 	<form method="POST" action="test3.php" class="tdListForm">
 	<?php if (isset($errors)) { ?>
