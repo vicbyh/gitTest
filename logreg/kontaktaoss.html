@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+ 	<link rel="stylesheet" href="logreg.css">
+ 	<meta charset="UTF-8">
+ </head>
+ <body>
+ <title>Kontakta oss</title>
+ <div class="navbar">
+  <a href="#home">Logga ut</a>
+  <a href="#news">Kontakta oss</a>
+  <a href="#contact">Om oss</a>
+  <a href="#img"> <img src="../Bilder/header2.png" alt="logpic" id="logo"></a>
+	</div>
+<div class="sidenav">
+  <a href="#about">Start</a>
+  <a href="#services">Att göra-lista</a>
+  <a href="#clients">Kalender</a>
+  <a href="#contact">Mitt konto</a>
+  <a href="#contact">Länkar</a>
+</div>
+    <form class="kontaktaOssForm" method="POST" action="kontaktaoss.html">
+        <h1>Har du feedback eller frågor? Eller behöver du support? Skriv ditt ärende här nedan</h1>
+        <p><label for="mail">E-post</label></p>
+        <input type="text" placeholder="Vänligen skriv in din e-post" id="kontaktaOssEpost">  
+        <p><label for="arende">Ärende</label></p>
+        <textarea placeholder="Skriv in ditt ärende" name="kontaktaossTxt"></textarea>  
+        <p><input type="button" value="Skicka!" id="kontaktaOssBtn"></p>
+    </form>
+
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="logreg.js"></script>
+ </body>
+</html>

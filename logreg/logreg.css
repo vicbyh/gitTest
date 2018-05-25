@@ -30,13 +30,13 @@
     top: 3px; /* Position the navbar at the top of the page */
      /* Full width */
      width:270px;
-     left:155px;
+     left:173px;
 }
 
 /* The sidebar menu */
 .sidenav {
     height: 100%; /* Full-height: remove this if you want "auto" height */
-    width: 160px; /* Set the width of the sidebar */
+    width: 180px; /* Set the width of the sidebar */
     position: fixed; /* Fixed Sidebar (stay in place on scroll) */
     z-index: 1; /* Stay on top */
     top: 0; /* Stay at the top */
@@ -112,18 +112,20 @@ input[type=submit] {
 	width: 100%;
 	margin: 30px auto;
 	text-align: center;
-	color: green;
-	background: yellow;
+	color: white;
+	background: green;
 	border:2px solid black;
 	border-radius: 20px;
+    opacity: 0.8;
 }
 .tdListForm{
 width: 95%;
 margin: 30px auto;
 border-radius: 5px;
 padding: 10px;
-background: orange;
-border: 1px solid yellow;
+background: green;
+border: 1px solid black;
+opacity:0.8;
 }
 
 .tdListForm p {
@@ -141,11 +143,12 @@ margin: 0px;
 
 .add_btn {
 	height: 39px;
-	background: blue;
-	color: pink;
+	background: white;
+	color: green;
 	border: 2px solid black;
 	border-radius: 5px;
 	padding: 5px 20px;
+    opacity:0.8;
 }
 
 .listTree{	width: 100%;
@@ -189,19 +192,45 @@ text-decoration: none;
 }
 
 #schema{
-    width: 160%;
-    position: relative;
-    left: -60px;
+    width: 80%;
+    position: fixed;
+    left: 200px;
     border: 3px solid black;
 
 }
 
-#schemaHead{
+.schemaBtns {
 
-    position: relative;
-    left: 90px;
-
+    position: fixed;
+    left: 200px;
 }
+
+.omOssTxt  {
+    color: white;
+    background-color: grey;
+    border-radius: 20px;
+    border: 3px solid black;
+    opacity:0.8;
+    
+}
+
+.kontaktaOssForm h1{
+    background-color:white;
+    border-radius: 20px;
+    opacity: 0.7;
+}
+
+.kontaktaOssForm #kontaktaOssEpost {
+    width: 400px;
+}
+
+.kontaktaOssForm textarea{
+    width: 400px;
+    height: 250px;
+}
+
+
+
 
 
 

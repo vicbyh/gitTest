@@ -9,14 +9,14 @@ if (isset($_POST['submit'])) {
 		$errors = "Du måste skriva något";
 	}else {
 	mysqli_query($db, "INSERT INTO tasks (task) VALUES ('$task')");
-	header('location: test3.php');
+	header('location: todolist.php');
 	}
 }
 
 if (isset($_GET['del_task'])) {
 	$id = $_GET['del_task'];
 	mysqli_query($db, "DELETE FROM tasks WHERE id=$id");
-	header('location: test3.php');}
+	header('location: todolist.php');}
 
 $tasks = mysqli_query($db, "SELECT * FROM tasks");
 	
@@ -29,7 +29,7 @@ $tasks = mysqli_query($db, "SELECT * FROM tasks");
  	<meta charset="UTF-8">
  </head>
  <body>
- <title>Logga in</title>
+ <title>Att göra-lista</title>
  <div class="navbar">
   <a href="#home">Logga ut</a>
   <a href="#news">Kontakta oss</a>
@@ -40,13 +40,13 @@ $tasks = mysqli_query($db, "SELECT * FROM tasks");
   <a href="#about">Start</a>
   <a href="#services">Att göra-lista</a>
   <a href="#clients">Kalender</a>
-  <a href="#contact">Nationsguiden</a>
   <a href="#contact">Mitt konto</a>
+  <a href="#contact">Länkar</a>
 </div>
 			<div class="heading">
 		<h2>Att göra-lista</h2>
 	</div>
-	<form method="POST" action="test3.php" class="tdListForm">
+	<form method="POST" action="todolist.php" class="tdListForm">
 	<?php if (isset($errors)) { ?>
 		<p><?php echo $errors; ?></p>
 	<?php } ?>
@@ -54,11 +54,18 @@ $tasks = mysqli_query($db, "SELECT * FROM tasks");
 		<input type="text" name="task" class="task_input">
 		<button type="submit" class="add_btn" name="submit">Lägg till</button>
 	</form>
+	<div class="datumInputTxt">
+		<input type="text" class="datumTxt" placeholder="Skriv in datum på formen DD/MM/YY" name="datum"></input>
+		<input type="text" class="tidTxt" placeholder="Skriv in klockslag på formen HH:MM, t.ex 00:00" name="datum">
+
+	</div>
 	
 	<table class="listTree">
 		<thead>
 			<tr>
 				<th>Nr</th>
+				<th>Datum</th>
+				<th>Tid</th>
 				<th>Att göra</th>
 				<th>Radera</th>
 			</tr>
@@ -70,7 +77,7 @@ $tasks = mysqli_query($db, "SELECT * FROM tasks");
 				<td><?php echo $i; ?></td>
 				<td class="task"><?php echo $row['task']; ?> </td>
 				<td class="delete">
-					<a href="test3.php?del_task=<?php echo $row['id']; ?>">x</a>
+					<a href="todolist.php?del_task=<?php echo $row['id']; ?>">x</a>
 			</tr>
 		
 		<?php $i++; } ?>
