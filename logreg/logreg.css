@@ -75,6 +75,7 @@
 body{
 background-image: url(../Bilder/female-student.jpg);
 background-size: 1300px;
+font-family: 'Tajawal', sans-serif;
 background-repeat: no-repeat;
 color: black;
 background-color: white;
@@ -229,6 +230,24 @@ text-decoration: none;
     height: 250px;
 }
 
+.links #linkhead{
+    background-color: white;
+    border-radius: 20px;
+    opacity:0.6;
+}
+
+.links #mecenat {
+  width: 300px;
+}
+
+.links #nationsguiden{
+    width: 200px;
+}
+
+.links #studenthalsan{
+    border-radius: 20px;
+    opacity: 0.8;
+}
 
 
 

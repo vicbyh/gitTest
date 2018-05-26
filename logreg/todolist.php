@@ -1,14 +1,16 @@
 <?php 
 	$errors = "";
 	
-$db = mysqli_connect('dbtrain.im.uu.se', 'dbtrain_822', 'xbjnma', 'dbtrain_822');
+$db = mysqli_connect('localhost', 'root', 'root', 'Studenthjalpen');
 
 if (isset($_POST['submit'])) {
 	$task = $_POST['task'];
-	if (empty($task)) {
-		$errors = "Du måste skriva något";
+	$datum = $_POST['datum'];
+	$tid = $_POST['tid'];
+	if (empty($task) || empty($datum) || empty($tid)) {
+		$errors = "Du måste fylla i alla fält";
 	}else {
-	mysqli_query($db, "INSERT INTO tasks (task) VALUES ('$task')");
+	mysqli_query($db, "INSERT INTO Aktivitet (Aktivitets_Namn, Datum, Tid) VALUES ('$task', '$datum', '$tid')");
 	header('location: todolist.php');
 	}
 }
@@ -51,14 +53,11 @@ $tasks = mysqli_query($db, "SELECT * FROM tasks");
 		<p><?php echo $errors; ?></p>
 	<?php } ?>
 	
-		<input type="text" name="task" class="task_input">
+		<input type="text" name="task" class="task_input" placeholder="Skriv in aktivitet">
+		<input type="text" class="datumTxt" placeholder="Skriv in datum på formen DD/MM/YY" name="datum"></input>
+		<input type="text" class="tidTxt" placeholder="Skriv in klockslag på formen HH:MM, t.ex 00:00" name="tid">
 		<button type="submit" class="add_btn" name="submit">Lägg till</button>
 	</form>
-	<div class="datumInputTxt">
-		<input type="text" class="datumTxt" placeholder="Skriv in datum på formen DD/MM/YY" name="datum"></input>
-		<input type="text" class="tidTxt" placeholder="Skriv in klockslag på formen HH:MM, t.ex 00:00" name="datum">
-
-	</div>
 	
 	<table class="listTree">
 		<thead>
