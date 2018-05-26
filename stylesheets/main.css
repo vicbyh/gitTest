@@ -12,13 +12,28 @@ div
     overflow: hidden;
     background-color: transparent;
 }
+.parag p
+{
+    background: orange;
+    opacity: 0.7;
+    border-radius: 20px;
+    position: absolute;
+    width: 50%;
+    height: 100px;
+    left: 30%;
+    top: 60%;
+    margin-left: -25%;
+    margin-top: -250px; 
+}
+
+
 p
 {
     color: white;
     font-size: 23px;
     position: absolute;
     width: 50%;
-    height: 200 px;
+    height: 200px;
     left: 30%;
     top: 60%;
     margin-left: -25%;
@@ -58,6 +73,4 @@ h1
     right: 50px;
 } 
 
-	font-size: 30px;
 	
-}
