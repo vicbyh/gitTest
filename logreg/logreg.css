@@ -135,6 +135,10 @@ margin: 0px;
 
 }
 
+.kategorier {
+    color: white;
+}
+
 .task_input {
 	width: 73%;
 	height: 30px;
