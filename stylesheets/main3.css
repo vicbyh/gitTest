@@ -4,18 +4,37 @@ body
     background-size: 100% auto;
     background-repeat: no-repeat;
 }
+h1
+{
+	font-size: 25px;
+	text-align: center;
+}
+.orange
+{
+	background-color: #ffb366;
+}
 
 p
 {
-	color: black;
+	color: white;
 }
 .sidtext
 {
-	background: orange;
-    opacity: 0.8;
+	background: #f79947;
+    opacity: 0.9;
     color: white;
 	font-size: 20px;
    	height:400px;
+	width: 440px;
+	border-radius: 10px;
+}
+.sidtext2
+{
+	background: #f79947;
+    opacity: 0.9;
+    color: white;
+	font-size: 20px;
+   	height:550px;
 	width: 440px;
 	border-radius: 10px;
 }
