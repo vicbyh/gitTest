@@ -159,22 +159,38 @@ margin: 0px;
 
 .listTree tr{
 	border-bottom: 1px solid black;
+    background: white;
+    opacity: 0.8;
 	
+}
+
+.listTree tr #kal{
+    font-size: 12px;
+
+}
+
+.listTree tr .addKalender a{
+color: white;
+background: blue;
+padding: 1px 6px;
+border-radius: 3px;
+text-decoration: none;    
+
 }
 
 .listTree th{
 	font-size: 19px;
-	color: #6B8E23;
+	color: black;
 }
 
 .listTree th, td{
-	border: none;
+	border: 1px solid black;
 	height: 30px;
 	padding: 2px;
 }
 
 .listTree tr:hover {
-	background: grey;
+	background: green;
 }
 
 .task {
@@ -186,7 +202,7 @@ margin: 0px;
 }
 .delete a{
 color: white;
-background: red;
+background: green;
 padding: 1px 6px;
 border-radius: 3px;
 text-decoration: none;
