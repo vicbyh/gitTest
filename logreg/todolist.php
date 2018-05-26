@@ -5,22 +5,28 @@ $db = mysqli_connect('localhost', 'root', 'root', 'Studenthjalpen');
 
 if (isset($_POST['submit'])) {
 	$task = $_POST['task'];
-	$datum = $_POST['datum'];
 	$tid = $_POST['tid'];
-	if (empty($task) || empty($datum) || empty($tid)) {
-		$errors = "Du måste fylla i alla fält";
-	}else {
-	mysqli_query($db, "INSERT INTO Aktivitet (Aktivitets_Namn, Datum, Tid) VALUES ('$task', '$datum', '$tid')");
+	$datum = $_POST['datum'];
+	if (empty($task)) {
+		$errors = "Du måste skriva något";
+	}
+	else if (checkdate('$datum') == false){
+		$errors = "Fel format på datum";
+	}
+
+
+	else {
+	mysqli_query($db, "INSERT INTO Aktivitet (Aktivitets_Namn, Tid, Datum) VALUES ('$task', '$tid', '$datum')");
 	header('location: todolist.php');
 	}
 }
 
 if (isset($_GET['del_task'])) {
 	$id = $_GET['del_task'];
-	mysqli_query($db, "DELETE FROM tasks WHERE id=$id");
+	mysqli_query($db, "DELETE FROM Aktivitet WHERE Aktivitets_ID=$id");
 	header('location: todolist.php');}
 
-$tasks = mysqli_query($db, "SELECT * FROM tasks");
+$tasks = mysqli_query($db, "SELECT * FROM Aktivitet");
 	
 
 ?>
@@ -54,8 +60,8 @@ $tasks = mysqli_query($db, "SELECT * FROM tasks");
 	<?php } ?>
 	
 		<input type="text" name="task" class="task_input" placeholder="Skriv in aktivitet">
-		<input type="text" class="datumTxt" placeholder="Skriv in datum på formen DD/MM/YY" name="datum"></input>
-		<input type="text" class="tidTxt" placeholder="Skriv in klockslag på formen HH:MM, t.ex 00:00" name="tid">
+		<input type="text" class="datumTxt" placeholder="Skriv in datum på formen MM,DD,YYYY (valfritt)" name="datum"></input>
+		<input type="text" class="tidTxt" placeholder="Skriv in klockslag på formen HH:MM, t.ex 00:00 (valfritt)" name="tid">
 		<button type="submit" class="add_btn" name="submit">Lägg till</button>
 	</form>
 	
@@ -66,7 +72,8 @@ $tasks = mysqli_query($db, "SELECT * FROM tasks");
 				<th>Datum</th>
 				<th>Tid</th>
 				<th>Att göra</th>
-				<th>Radera</th>
+				<th>Färdig</th>
+				<th id="kal">Lägg till i kalender</th>
 			</tr>
 		</thead>
 		
@@ -74,9 +81,12 @@ $tasks = mysqli_query($db, "SELECT * FROM tasks");
 		<?php $i = 1; while ($row = mysqli_fetch_array($tasks)) { ?>
 			<tr>
 				<td><?php echo $i; ?></td>
-				<td class="task"><?php echo $row['task']; ?> </td>
+				<td class="datumRow"><?php echo $row['Datum']; ?> </td>
+				<td class="tidRow"><?php echo $row['Tid']; ?> </td>
+				<td class="task"><?php echo $row['Aktivitets_Namn']; ?> </td>
 				<td class="delete">
-					<a href="todolist.php?del_task=<?php echo $row['id']; ?>">x</a>
+					<a href="todolist.php?del_task=<?php echo $row['Aktivitets_ID']; ?>">√</a> </td>
+				<td class="addKalender"><a href="#add">+</a></td>
 			</tr>
 		
 		<?php $i++; } ?>
