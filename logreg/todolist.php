@@ -4,10 +4,10 @@
 $db = mysqli_connect('localhost', 'root', 'root', 'Studenthjalpen');
 
 if (isset($_POST['submit'])) {
-	$task = $_POST['task'];
-	$tid = $_POST['tid'];
-	$datum = $_POST['datum'];
-	$kategori = $_POST['kategori'];
+	$task = mysqli_real_escape_string($db, trim($_POST['task']));
+	$tid = mysqli_real_escape_string($db, trim($_POST['tid']));
+	$datum = mysqli_real_escape_string($db, trim($_POST['datum']));
+	$kategori = mysqli_real_escape_string($db, trim($_POST['kategori']));
 	
 	function isItValidDate($datum) {
   		if(preg_match("/^(\d{2})\/(\d{2})\/(\d{4})$/", $datum, $matches)){
@@ -93,11 +93,15 @@ if (isset($_GET['del_task'])) {
 	</form>
 	<form method="POST" action="todolist.php" class="searchtdListForm">
 		<h2>Sök aktivitet</h2>
+		<h3>(Du kan söka på ett eller flera fält)</h3>
 		<input type="text" name="searchTask" class="searchtask_input" placeholder="Sök efter aktivitetsnamn">
 		<input type="text" name="searchDatum" class="searchdatumTxt" placeholder="Sök aktivitet efter datum">
 		<input type="text" name="searchTid" class="searchtidTxt" placeholder="Sök aktivitet efter tid">
 		<input type="text" name="searchKategori" class="search_Kategori" placeholder="Sök aktivitet efter kategori">
 		<button type="submit" class="filter_btn" name="filter">Sök</button>
+			<form method="POST" action="todolist.php" class="refreshToDoList">
+				<button type="submit" class="refresh_btn" name="refresh">Ta bort sökning</button>
+			</form>
 	</form>
 
 	
@@ -108,26 +112,86 @@ if (isset($_GET['del_task'])) {
 				<th>Datum</th>
 				<th>Tid</th>
 				<th>Att göra</th>
+				<th>Kategori</th>
 				<th>Färdig</th>
 				<th id="kal">Lägg till i kalender</th>
-				<th>Kategori</th>
+				
 			</tr>
 		</thead>
 		
 		<tbody>
 		<?php $i = 1; 
 			if(!isset($_POST['filter'])) { 
-				$tasks = mysqli_query($db, "SELECT * FROM Aktivitet"); } 
+				$tasks = mysqli_query($db, "SELECT * FROM Aktivitet"); }
+				else {
+					$searchTask = mysqli_real_escape_string($db, trim(strtolower($_POST['searchTask'])));
+					$searchDatum = mysqli_real_escape_string($db, trim(strtolower($_POST['searchDatum'])));
+					$searchTid = mysqli_real_escape_string($db, trim(strtolower($_POST['searchTid'])));
+					$searchKategori = mysqli_real_escape_string($db, trim(strtolower($_POST['searchKategori'])));
+
+						if (!empty($searchTask) && empty($searchDatum) && empty($searchTid) && empty($searchKategori)){
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Aktivitets_Namn)='$searchTask'");
+						}
+						else if (empty($searchTask) && !empty($searchDatum) && empty($searchTid) && empty($searchKategori)){
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Datum)='$searchDatum'");
+						}
+						else if (empty($searchTask) && empty($searchDatum) && !empty($searchTid) && empty($searchKategori)){
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Tid)='$searchTid'");
+						}
+						else if (empty($searchTask) && empty($searchDatum) && empty($searchTid) && !empty($searchKategori)){
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Kategori)='$searchKategori'");
+						}
+						else if (!empty($searchTask) && !empty($searchDatum) && empty($searchTid) && empty($searchKategori)){
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Aktivitets_Namn)='$searchTask' AND LOWER(Datum)='$searchDatum'");
+						}
+						else if (!empty($searchTask) && empty($searchDatum) && !empty($searchTid) && empty($searchKategori)){
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Aktivitets_Namn)='$searchTask' AND LOWER(Tid)='$searchTid'");
+						}
+						else if (!empty($searchTask) && empty($searchDatum) && empty($searchTid) && !empty($searchKategori)){
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Aktivitets_Namn)='$searchTask' AND LOWER(Kategori)='$searchKategori'");
+						}
+						else if (empty($searchTask) && !empty($searchDatum) && !empty($searchTid) && empty($searchKategori)){
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Datum)='$searchDatum' AND LOWER(Tid)='$searchTid'");
+						}
+						else if (empty($searchTask) && !empty($searchDatum) && empty($searchTid) && !empty($searchKategori)){
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Datum)='$searchDatum' AND LOWER(Kategori)='$searchKategori'");
+						}
+						else if (empty($searchTask) && empty($searchDatum) && !empty($searchTid) && !empty($searchKategori)){
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Tid)='$searchTid' AND LOWER(Kategori)='$searchKategori'");
+						}
+						else if (!empty($searchTask) && !empty($searchDatum) && !empty($searchTid) && empty($searchKategori)){
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Tid)='$searchTid' AND LOWER(Aktivitets_Namn)='$searchTask' AND LOWER(Datum)='$searchDatum'");
+						}
+						else if (!empty($searchTask) && !empty($searchDatum) && empty($searchTid) && !empty($searchKategori)){
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Kategori)='$searchKategori' AND LOWER(Aktivitets_Namn)='$searchTask' AND LOWER(Datum)='$searchDatum'");
+						}
+						else if (!empty($searchTask) && empty($searchDatum) && !empty($searchTid) && !empty($searchKategori)){
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Kategori)='$searchKategori' AND LOWER(Aktivitets_Namn)='$searchTask' AND LOWER(Tid)='$searchTid'");
+						}
+						else if (empty($searchTask) && !empty($searchDatum) && !empty($searchTid) && !empty($searchKategori)){
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Kategori)='$searchKategori' AND LOWER(Datum)='$searchDatum' AND LOWER(Tid)='$searchTid'");
+						}
+						else if (!empty($searchTask) && !empty($searchDatum) && !empty($searchTid) && !empty($searchKategori)){
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Kategori)='$searchKategori' AND LOWER(Datum)='$searchDatum' AND LOWER(Tid)='$searchTid' AND LOWER(Aktivitets_Namn)='$searchTask'");
+						}
+						else if (empty($searchTask) && empty($searchDatum) && empty($searchTid) && empty($searchKategori)){
+							echo '<p style="color: red; text-align: center">Du måste fylla i minst ett sökfält!</p>';
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet");
+						}
+
+
+				} 
 				while ($row = mysqli_fetch_array($tasks)) { ?>
 				<tr>
 					<td><?php echo $i; ?></td>
 					<td class="datumRow"><?php echo $row['Datum']; ?> </td>
 					<td class="tidRow"><?php echo $row['Tid']; ?> </td>
 					<td class="task"><?php echo $row['Aktivitets_Namn']; ?> </td>
+					<td class="categorys"><?php echo $row['Kategori']; ?> </td>
 					<td class="delete">
 						<a href="todolist.php?del_task=<?php echo $row['Aktivitets_ID']; ?>">√</a> </td>
 					<td class="addKalender"><a href="#add">+</a></td>
-					<td class="categorys"><?php echo $row['Kategori']; ?> </td>
+					
 				</tr>
 		
 		<?php $i++; } ?>
