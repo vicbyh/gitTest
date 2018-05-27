@@ -24,8 +24,8 @@ if (isset($_POST['submit'])) {
         }
     }
 
-	if (empty($task)) {
-		$errors = "Du måste skriva något";
+	if (empty($task) || empty($tid) || empty($datum) || empty($kategori)) {
+		$errors = "Alla fält måste fyllas i";
 	}
 
 	else if (!empty($tid) && $checked == false){
@@ -54,6 +54,7 @@ if (isset($_GET['del_task'])) {
 <html>
  <head> 
  	<link rel="stylesheet" href="logreg.css">
+ 	<link href="https://fonts.googleapis.com/css?family=Tajawal" rel="stylesheet">
  	<meta charset="UTF-8">
  </head>
  <body>
@@ -80,8 +81,8 @@ if (isset($_GET['del_task'])) {
 	<?php } ?>
 	
 		<input type="text" name="task" class="task_input" placeholder="Skriv in aktivitet">
-		<input type="text" class="datumTxt" placeholder="Skriv in datum på formen DD/MM/YYYY (valfritt)" name="datum"></input>
-		<input type="text" class="tidTxt" placeholder="Skriv in klockslag på formen HH:MM, t.ex 00:00 (valfritt)" name="tid">
+		<input type="text" class="datumTxt" placeholder="Skriv in datum på formen DD/MM/YYYY" name="datum"></input>
+		<input type="text" class="tidTxt" placeholder="Skriv in klockslag på formen HH:MM, t.ex 00:00" name="tid">
 		<label class="kategorier">Välj kategori</label>
 		<p><select name="kategori">
   			<option value="Övrigt">Övrigt</option>
@@ -122,7 +123,7 @@ if (isset($_GET['del_task'])) {
 		<tbody>
 		<?php $i = 1; 
 			if(!isset($_POST['filter'])) { 
-				$tasks = mysqli_query($db, "SELECT * FROM Aktivitet"); }
+				$tasks = mysqli_query($db, "SELECT * FROM Aktivitet ORDER BY Datum"); }
 				else {
 					$searchTask = mysqli_real_escape_string($db, trim(strtolower($_POST['searchTask'])));
 					$searchDatum = mysqli_real_escape_string($db, trim(strtolower($_POST['searchDatum'])));

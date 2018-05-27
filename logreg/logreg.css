@@ -2,11 +2,12 @@
 /* The navigation bar */
 .navbar {
     overflow: hidden;
-    background-color: #333;
+    background-color: #D3D3D3;
     position: fixed; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
     left: 0px;
+    z-index: 2;
 }
 
 /* Links inside the navbar */
@@ -37,13 +38,13 @@
 .sidenav {
     height: 100%; /* Full-height: remove this if you want "auto" height */
     width: 180px; /* Set the width of the sidebar */
-    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-    z-index: 1; /* Stay on top */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */ 
     top: 0; /* Stay at the top */
     left: 0;
-    background-color: #111; /* Black */
+    background-color: #D3D3D3; /* Black */
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 20px;
+    z-index:3;
 }
 
 /* The navigation menu links */
@@ -76,7 +77,6 @@ body{
 background-image: url(../Bilder/female-student.jpg);
 background-size: 1300px;
 font-family: 'Tajawal', sans-serif;
-background-repeat: no-repeat;
 color: black;
 background-color: white;
 text-align: center;
@@ -289,6 +289,21 @@ text-decoration: none;
     border-radius: 20px;
     opacity: 0.8;
 }
+
+.toDoToday {
+    text-align: left;
+    opacity:0.7;
+    border-radius: 20px;
+    background-color: green;
+    width: 80%;
+}
+
+#dagensNation {
+    border-radius: 20px;
+    opacity:0.9;
+}
+
+
 
 
 
