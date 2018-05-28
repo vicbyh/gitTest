@@ -7,15 +7,30 @@
     <meta charset="UTF-8">
  </head>
  <body>
+    <title>Schema</title>
+           <div class="navbar">
+              <a href="../index.html">Logga ut</a>
+              <a> <img src="../Bilder/header2.png" alt="logpic" id="logo"></a>
+           </div>
+           <div class="sidenav">
+              <p> <a href="startAdmin.php">Start</a></p>
+              <p> <a href="userlist.php">Inställningar för kunder</a></p>
+              <p> <a href="AdminKonto.html">Admin konto</a></p>
+            </div>
+
         <img src="../Bilder/header2.png" alt="logpic" id="logo">
-        <h1>Lista över registrerade användare</h1>
-        <table width="600" border="1" cellpadding="1" cellspacing="1" class= "Userlist">
-                <tr>
+        <div class= "Textuserlist">     
+        <h1>Lista över registrerade användare </h1>
+        </div>
+       
+
+        <table class= "Userlist">
+                <tr class="trlist">
                     <!--skapar kolumner för varje "rad" i databasen -->
                     <th>Användarnamn</th>
                     <th>Epost</th>
                 </tr>
-
+   
                 <?php
                 $db = mysqli_connect('localhost', 'root', 'root', 'Studenthjalpen');
                 $query = "SELECT * FROM Anvandare";
@@ -30,8 +45,29 @@
                     echo "</tr>";
 
                 }
+
+                /*$email = mysqli_real_escape_string($db, $_POST['Epost']);
+                $sql = "DELETE * FROM Anvandare WHERE Epost = '$email'";
+               
+
+                if ($db->query($sql) === TRUE)
+                {
+                    echo "succes ta bort";
+                }
+                else
+                {
+                    echo "fel vid borttagning";
+                }
+
+                header('location: Userlist.php');
+                $db->close(); */
+
                 ?>
-        </table>   
+        </table>
+
+
+   <p><input type="reset" name="rensa" id="rensa" value="Ta bort användare" class="UserlistBtn" ></p>
  </body>
+
 </html>
  
