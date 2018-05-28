@@ -35,7 +35,8 @@ if (strlen($alias) >= 1 && strlen($mail) >= 1 && strlen($pass) >=1 && strpos($ma
 	$testmailrow = $testmail2['Epost'];
 
 	if ($testmailrow=="" && $testaliasrow =="") {
-		mysqli_query($db, "INSERT INTO Anvandare (Anvandar_Namn, Epost, Losenord, Salt) VALUES ('$alias', '$mail', '$hashedPass', '$uniquesalt')");
+		$anvandarTyp = "Kund";
+		mysqli_query($db, "INSERT INTO Anvandare (Anvandar_Namn, Anvandar_Typ, Epost, Losenord, Salt) VALUES ('$alias', '$anvandarTyp', '$mail', '$hashedPass', '$uniquesalt')");
 		echo "Registreringen lyckades! <br> Du skickas till login-sidan!";
 		header("Refresh: 3; url=login.html");
 	}

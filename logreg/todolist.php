@@ -132,53 +132,53 @@ if (isset($_GET['del_task'])) {
 					$searchKategori = mysqli_real_escape_string($db, trim(strtolower($_POST['searchKategori'])));
 
 						if (!empty($searchTask) && empty($searchDatum) && empty($searchTid) && empty($searchKategori)){
-							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Aktivitets_Namn)='$searchTask'");
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE Anvandar_ID='$userId' AND LOWER(Aktivitets_Namn)='$searchTask'");
 						}
 						else if (empty($searchTask) && !empty($searchDatum) && empty($searchTid) && empty($searchKategori)){
-							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Datum)='$searchDatum'");
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE Anvandar_ID='$userId' AND LOWER(Datum)='$searchDatum'");
 						}
 						else if (empty($searchTask) && empty($searchDatum) && !empty($searchTid) && empty($searchKategori)){
-							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Tid)='$searchTid'");
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE Anvandar_ID='$userId' AND LOWER(Tid)='$searchTid'");
 						}
 						else if (empty($searchTask) && empty($searchDatum) && empty($searchTid) && !empty($searchKategori)){
-							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Kategori)='$searchKategori'");
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE Anvandar_ID='$userId' AND LOWER(Kategori)='$searchKategori'");
 						}
 						else if (!empty($searchTask) && !empty($searchDatum) && empty($searchTid) && empty($searchKategori)){
-							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Aktivitets_Namn)='$searchTask' AND LOWER(Datum)='$searchDatum'");
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE Anvandar_ID='$userId' AND LOWER(Aktivitets_Namn)='$searchTask' AND LOWER(Datum)='$searchDatum'");
 						}
 						else if (!empty($searchTask) && empty($searchDatum) && !empty($searchTid) && empty($searchKategori)){
-							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Aktivitets_Namn)='$searchTask' AND LOWER(Tid)='$searchTid'");
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE Anvandar_ID='$userId' AND LOWER(Aktivitets_Namn)='$searchTask' AND LOWER(Tid)='$searchTid'");
 						}
 						else if (!empty($searchTask) && empty($searchDatum) && empty($searchTid) && !empty($searchKategori)){
-							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Aktivitets_Namn)='$searchTask' AND LOWER(Kategori)='$searchKategori'");
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE Anvandar_ID='$userId' AND LOWER(Aktivitets_Namn)='$searchTask' AND LOWER(Kategori)='$searchKategori'");
 						}
 						else if (empty($searchTask) && !empty($searchDatum) && !empty($searchTid) && empty($searchKategori)){
-							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Datum)='$searchDatum' AND LOWER(Tid)='$searchTid'");
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE Anvandar_ID='$userId' AND LOWER(Datum)='$searchDatum' AND LOWER(Tid)='$searchTid'");
 						}
 						else if (empty($searchTask) && !empty($searchDatum) && empty($searchTid) && !empty($searchKategori)){
-							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Datum)='$searchDatum' AND LOWER(Kategori)='$searchKategori'");
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE Anvandar_ID='$userId' AND LOWER(Datum)='$searchDatum' AND LOWER(Kategori)='$searchKategori'");
 						}
 						else if (empty($searchTask) && empty($searchDatum) && !empty($searchTid) && !empty($searchKategori)){
-							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Tid)='$searchTid' AND LOWER(Kategori)='$searchKategori'");
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE Anvandar_ID='$userId' AND LOWER(Tid)='$searchTid' AND LOWER(Kategori)='$searchKategori'");
 						}
 						else if (!empty($searchTask) && !empty($searchDatum) && !empty($searchTid) && empty($searchKategori)){
-							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Tid)='$searchTid' AND LOWER(Aktivitets_Namn)='$searchTask' AND LOWER(Datum)='$searchDatum'");
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE Anvandar_ID='$userId' AND LOWER(Tid)='$searchTid' AND LOWER(Aktivitets_Namn)='$searchTask' AND LOWER(Datum)='$searchDatum'");
 						}
 						else if (!empty($searchTask) && !empty($searchDatum) && empty($searchTid) && !empty($searchKategori)){
-							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Kategori)='$searchKategori' AND LOWER(Aktivitets_Namn)='$searchTask' AND LOWER(Datum)='$searchDatum'");
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE Anvandar_ID='$userId' AND LOWER(Kategori)='$searchKategori' AND LOWER(Aktivitets_Namn)='$searchTask' AND LOWER(Datum)='$searchDatum'");
 						}
 						else if (!empty($searchTask) && empty($searchDatum) && !empty($searchTid) && !empty($searchKategori)){
-							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Kategori)='$searchKategori' AND LOWER(Aktivitets_Namn)='$searchTask' AND LOWER(Tid)='$searchTid'");
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE Anvandar_ID='$userId' AND LOWER(Kategori)='$searchKategori' AND LOWER(Aktivitets_Namn)='$searchTask' AND LOWER(Tid)='$searchTid'");
 						}
 						else if (empty($searchTask) && !empty($searchDatum) && !empty($searchTid) && !empty($searchKategori)){
-							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Kategori)='$searchKategori' AND LOWER(Datum)='$searchDatum' AND LOWER(Tid)='$searchTid'");
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE Anvandar_ID='$userId' AND LOWER(Kategori)='$searchKategori' AND LOWER(Datum)='$searchDatum' AND LOWER(Tid)='$searchTid'");
 						}
 						else if (!empty($searchTask) && !empty($searchDatum) && !empty($searchTid) && !empty($searchKategori)){
-							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE LOWER(Kategori)='$searchKategori' AND LOWER(Datum)='$searchDatum' AND LOWER(Tid)='$searchTid' AND LOWER(Aktivitets_Namn)='$searchTask'");
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE Anvandar_ID='$userId' AND LOWER(Kategori)='$searchKategori' AND LOWER(Datum)='$searchDatum' AND LOWER(Tid)='$searchTid' AND LOWER(Aktivitets_Namn)='$searchTask'");
 						}
 						else if (empty($searchTask) && empty($searchDatum) && empty($searchTid) && empty($searchKategori)){
 							echo '<p style="color: red; text-align: center">Du måste fylla i minst ett sökfält!</p>';
-							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet");
+							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE Anvandar_ID='$userId'");
 						}
 
 

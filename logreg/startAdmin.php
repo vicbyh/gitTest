@@ -1,3 +1,14 @@
+<?php
+session_start();
+if (isset($_SESSION["admin"])) { 
+$db = mysqli_connect('localhost', 'root', 'root', 'Studenthjalpen');
+}
+
+else {
+  session_destroy();
+  header ('location: ../index.html');
+} 
+?>
 <!DOCTYPE html>
 <html>
      <head> 

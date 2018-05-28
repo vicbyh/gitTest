@@ -1,5 +1,6 @@
 <?php
 session_start();
+$userId = $_SESSION["userid"];
 if (isset($_SESSION['username']) && isset($_SESSION['mail']) && isset($_SESSION['userid'])) { 
 
 
@@ -40,7 +41,7 @@ else {
   <h2>Att göra idag:<h2>
 <?php $i = 1;
 $todaysDate = date("d/m/Y");
-$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE Datum='$todaysDate' ORDER BY Tid");
+$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE Datum='$todaysDate' AND Anvandar_ID='$userId' ORDER BY Tid");
 while ($row = mysqli_fetch_array($tasks)) { ?>
         <tr>
           <td><?php echo $i; ?></td>

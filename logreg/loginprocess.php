@@ -25,13 +25,24 @@ if (isset($_POST['mail']) && isset($_POST['pass']) ) {
 	$getUserId2 = mysqli_fetch_assoc($getUserId);
 	$sqlUserId = $getUserId2['Anvandar_ID'];
 
+	$getAnvandarTyp = mysqli_query($db,"SELECT Anvandar_Typ FROM Anvandare WHERE Epost='$mail'");
+	$getAnvandarTyp2 = mysqli_fetch_assoc($getAnvandarTyp);
+	$sqlAnvandarTyp = $getAnvandarTyp2['Anvandar_Typ'];
+
 	$compare = sha1($sqlSalt . $_POST['pass']);
 
 	if ($sqlPass == $compare) {
-		$_SESSION["username"] = $sqlUserName;
-		$_SESSION["mail"] = $mail; 
-		$_SESSION["userid"] = $sqlUserId;
-		header ("location: start.php"); 
+
+		if ($sqlAnvandarTyp == "Kund") { 
+			$_SESSION["username"] = $sqlUserName;
+			$_SESSION["mail"] = $mail; 
+			$_SESSION["userid"] = $sqlUserId;
+			header ("location: start.php"); 
+		}
+		else {
+			$_SESSION["admin"] = $sqlUserName;
+			header ("location: startAdmin.php");
+		}
 	}
 
 	else {
