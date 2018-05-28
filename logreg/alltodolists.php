@@ -55,7 +55,7 @@ else {
             $search = mysqli_real_escape_string($db, trim($_POST['searchtdlist']));
 
             $tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE Anvandar_ID='$search' ORDER BY Datum"); 
-            }
+            
            
 
         while ($row = mysqli_fetch_array($tasks)) { ?>
@@ -68,7 +68,7 @@ else {
           
         </tr>
     
-    <?php $i++; } ?>
+    <?php $i++; } }?>
     
       
     </tbody>
