@@ -8,7 +8,7 @@
 		if (user.trim() == "" || epost.trim() == "" || password.trim() == "")
 		{
 
-			alert("Name must be filled out!!");	
+			alert("Var välnlig fyll i alla fält");	
 		}  
 		else
 		{
@@ -23,7 +23,7 @@
 			var thisRegex = /^[A-z0-9._]+@[A-z]+\.[a-z]+$/;
 			if (thisRegex.test(epost))
 			{
-			 alert ("Du har skrivit in en korrekt email");
+			 alert ("Du har nu registrerats");
 			}
 			else
 			{
