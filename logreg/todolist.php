@@ -1,6 +1,7 @@
 <?php 
 require 'bootstrap.php';
-	
+
+$userId = $_SESSION["userid"];
 
 $errors = "";
 
@@ -38,7 +39,7 @@ if (isset($_POST['submit'])) {
 	}
 
 	else {
-	mysqli_query($db, "INSERT INTO Aktivitet (Aktivitets_Namn, Tid, Datum, Kategori) VALUES ('$task', '$tid', '$datum', '$kategori')");
+	mysqli_query($db, "INSERT INTO Aktivitet (Aktivitets_Namn, Tid, Datum, Kategori, Anvandar_ID) VALUES ('$task', '$tid', '$datum', '$kategori', '$userId')");
 	header('location: todolist.php');
 	}
 }
@@ -73,7 +74,7 @@ if (isset($_GET['del_task'])) {
   <a href="links.php">Länkar</a>
 </div>
 			<div class="heading">
-		<h2>Att göra-lista</h2>
+		<h2><?php echo $_SESSION['username']; ?>s att göra-lista</h2>
 	</div>
 	<form method="POST" action="todolist.php" class="tdListForm">
 	<?php if (isset($errors)) { ?>
@@ -123,7 +124,7 @@ if (isset($_GET['del_task'])) {
 		<tbody>
 		<?php $i = 1; 
 			if(!isset($_POST['filter'])) { 
-				$tasks = mysqli_query($db, "SELECT * FROM Aktivitet ORDER BY Datum"); }
+				$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE Anvandar_ID='$userId' ORDER BY Datum"); }
 				else {
 					$searchTask = mysqli_real_escape_string($db, trim(strtolower($_POST['searchTask'])));
 					$searchDatum = mysqli_real_escape_string($db, trim(strtolower($_POST['searchDatum'])));

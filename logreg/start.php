@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['username']) && isset($_SESSION['mail'])) { 
+if (isset($_SESSION['username']) && isset($_SESSION['mail']) && isset($_SESSION['userid'])) { 
 
 
 $db = mysqli_connect('localhost', 'root', 'root', 'Studenthjalpen');
