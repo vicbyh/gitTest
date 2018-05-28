@@ -37,6 +37,7 @@ function createsalt()
 			$sql = "INSERT INTO Anvandare (Anvandar_Namn, Epost, Losenord, Salt) VALUES ('$user', '$email', '$hash', '$salt')";
 
 			$db->query($sql);
+			header('Location: login.html'); 
 		}
 
 		$db->close();
