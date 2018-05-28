@@ -39,7 +39,7 @@ if (isset($_POST['mail']) && isset($_POST['pass']) ) {
 			$_SESSION["userid"] = $sqlUserId;
 			header ("location: start.php"); 
 		}
-		else {
+		else if ($sqlAnvandarTyp == "Admin") {
 			$_SESSION["admin"] = $sqlUserName;
 			header ("location: startAdmin.php");
 		}
