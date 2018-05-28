@@ -50,11 +50,12 @@ else {
     </thead>
     
     <tbody>
-    <?php $i = 1; 
+    <?php $i = 1; $tasks=''; 
         if (isset($_POST['submit_Btn'])){  
             $search = mysqli_real_escape_string($db, trim($_POST['searchtdlist']));
-          }
+
             $tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE Anvandar_ID='$search' ORDER BY Datum"); 
+            }
            
 
         while ($row = mysqli_fetch_array($tasks)) { ?>
