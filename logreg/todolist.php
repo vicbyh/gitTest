@@ -1,7 +1,8 @@
 <?php 
-	$errors = "";
+require 'bootstrap.php';
 	
-$db = mysqli_connect('localhost', 'root', 'root', 'Studenthjalpen');
+
+$errors = "";
 
 if (isset($_POST['submit'])) {
 	$task = mysqli_real_escape_string($db, trim($_POST['task']));
@@ -60,17 +61,16 @@ if (isset($_GET['del_task'])) {
  <body>
  <title>Att göra-lista</title>
  <div class="navbar">
-  <a href="#home">Logga ut</a>
-  <a href="#news">Kontakta oss</a>
-  <a href="#contact">Om oss</a>
-  <a href="#img"> <img src="../Bilder/header2.png" alt="logpic" id="logo"></a>
+  <a href="logoutprocess.php">Logga ut</a>
+  <a href="kontaktaoss.php">Kontakta oss</a>
+  <a href="omoss.php">Om oss</a>
+  <img src="../Bilder/header2.png" alt="logpic" id="logo"></a>
 	</div>
-	<div class="sidenav">
-  <a href="#about">Start</a>
-  <a href="#services">Att göra-lista</a>
-  <a href="#clients">Kalender</a>
-  <a href="#contact">Mitt konto</a>
-  <a href="#contact">Länkar</a>
+<div class="sidenav">
+  <a href="start.php">Start</a>
+  <a href="todolist.php">Att göra-lista</a>
+  <a href="schema.php">Kalender</a>
+  <a href="links.php">Länkar</a>
 </div>
 			<div class="heading">
 		<h2>Att göra-lista</h2>

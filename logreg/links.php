@@ -1,3 +1,6 @@
+<?php
+require 'bootstrap.php';
+?>
 <!DOCTYPE html>
 <html>
  <head> 
@@ -8,17 +11,16 @@
  <body>
  <title>Länkar</title>
  <div class="navbar">
-  <a href="#home">Logga ut</a>
-  <a href="#news">Kontakta oss</a>
-  <a href="#contact">Om oss</a>
+  <a href="logoutprocess.php">Logga ut</a>
+  <a href="kontaktaoss.php">Kontakta oss</a>
+  <a href="omoss.php">Om oss</a>
   <a href="#img"> <img src="../Bilder/header2.png" alt="logpic" id="logo"></a>
-	</div>
+  </div>
 <div class="sidenav">
-  <a href="#about">Start</a>
-  <a href="#services">Att göra-lista</a>
-  <a href="#clients">Kalender</a>
-  <a href="#contact">Mitt konto</a>
-  <a href="#contact">Länkar</a>
+  <a href="start.php">Start</a>
+  <a href="todolist.php">Att göra-lista</a>
+  <a href="schema.php">Kalender</a>
+  <a href="links.php">Länkar</a>
 </div>
 <div class="links">
   <div id="linkhead"><h1>Länkar</h1>
