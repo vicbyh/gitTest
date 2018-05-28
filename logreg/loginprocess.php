@@ -21,11 +21,16 @@ if (isset($_POST['mail']) && isset($_POST['pass']) ) {
 	$getUserName2 = mysqli_fetch_assoc($getUserName);
 	$sqlUserName = $getUserName2['Anvandar_Namn'];
 
+	$getUserId = mysqli_query($db,"SELECT Anvandar_ID FROM Anvandare WHERE Epost='$mail'");
+	$getUserId2 = mysqli_fetch_assoc($getUserId);
+	$sqlUserId = $getUserId2['Anvandar_ID'];
+
 	$compare = sha1($sqlSalt . $_POST['pass']);
 
 	if ($sqlPass == $compare) {
 		$_SESSION["username"] = $sqlUserName;
 		$_SESSION["mail"] = $mail; 
+		$_SESSION["userid"] = $sqlUserId;
 		header ("location: start.php"); 
 	}
 
