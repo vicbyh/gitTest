@@ -1,45 +1,62 @@
 <?php
 	
+if (isset($_POST['alias']) && isset($_POST['mail']) && isset($_POST['pass'])) { 
+
 $db = mysqli_connect('localhost', 'root', 'root', 'Studenthjalpen');
 
 
-$user = mysqli_real_escape_string($db,$_POST['alias']);
-$email = mysqli_real_escape_string($db,$_POST['mail']);
-$password = mysqli_real_escape_string($db,$_POST['pass']);
+$alias = mysqli_real_escape_string($db,trim($_POST['alias']));
+$mail = mysqli_real_escape_string($db,trim($_POST['mail']));
+$pass = mysqli_real_escape_string($db,trim($_POST['pass']));
 
-$reg = "/^[A-z0-9._]+@[A-z]+\.[a-z]+$/";
 
-function createsalt()
-{
-	$string = "";
-	$char = "abcdefghijklmnopqrstuvxyzåäöABCDEFGHIJKLMNOPQRSTUVXYZÅÄÖ123456789";
-	$length = strlen($char);
-	for ($i=0; $i < 10; $i++) { 
-		$string .= $char[rand(0, $length - 1)];
+function createsalt(){
+	$myString = $_POST['alias'];
+	$myArray = str_split ($myString);
+	$done = "";
+	for ($x = 0; $x < strlen($myString); $x++) {
+		$done .= substr(sha1($myArray[$x]),rand(1,30),2);
 	}
-	return $string;
+	return $done;
 }
 
-		if (trim($user) == "" || trim($email) == "" || trim($password) == "")
-		{
+$uniquesalt = createsalt();
+$hashedPass = sha1($uniquesalt . $pass);
 
-			alert("Name must be filled out!!");	
-		}  
-		else if (!preg_match ($reg, $email))
-		{
-			header("Location: login.html");
-		}
-		else {
-			$salt = createsalt();
-			//krypterar lösenordet
-			$hash = hash('sha256',($salt . $password));
+$mailafterat = substr($mail, stripos($mail, '@') +1);
 
-			$sql = "INSERT INTO Anvandare (Anvandar_Namn, Epost, Losenord, Salt) VALUES ('$user', '$email', '$hash', '$salt')";
+if (strlen($alias) >= 1 && strlen($mail) >= 1 && strlen($pass) >=1 && strpos($mail, '@') && strpos($mailafterat, '.') ) {
 
-			$db->query($sql);
-			header('Location: login.html'); 
-		}
+	$testalias = mysqli_query($db,"SELECT Anvandar_Namn FROM Anvandare WHERE Anvandar_Namn='$alias'");
+	$testalias2 = mysqli_fetch_assoc($testalias);
+	$testaliasrow = $testalias2['Anvandar_Namn'];
+	$testmail = mysqli_query($db, "SELECT Epost FROM Anvandare WHERE Epost='$mail'");
+	$testmail2 = mysqli_fetch_assoc($testmail);
+	$testmailrow = $testmail2['Epost'];
 
-		$db->close();
+	if ($testmailrow=="" && $testaliasrow =="") {
+		mysqli_query($db, "INSERT INTO Anvandare (Anvandar_Namn, Epost, Losenord, Salt) VALUES ('$alias', '$mail', '$hashedPass', '$uniquesalt')");
+		echo "Registreringen lyckades! <br> Du skickas till login-sidan!";
+		header("Refresh: 3; url=login.html");
+	}
+	else{  
+		echo "Mailen eller användarnamnet är upptaget!";
+		header("Refresh: 3; url=registration.html");
+	
+	}
+
+	
+	}
+	else {
+	echo "Alla fält måste fyllas i korrekt!";
+	header("Refresh: 3; url=registration.php");
+	}
+
+}
+else {
+	header("location: registration.html");
+}
+
+	
 
 ?>

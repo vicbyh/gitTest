@@ -1,29 +1,48 @@
 <?php
-$db = mysqli_connect('localhost', 'root', 'root', 'Studenthjalpen');
+session_start();		
 
-$email = mysqli_real_escape_string($db,$_POST['mail']);
-$password = mysqli_real_escape_string($db,$_POST['pass']);
+if (isset($_POST['mail']) && isset($_POST['pass']) ) { 
 
-//hämtar lösenord och salt från databasen
-$sql = "SELECT Losenord, Salt FROM Anvandare WHERE Epost = '$email'";
+	$db = mysqli_connect('localhost', 'root', 'root', 'Studenthjalpen');
+	
+
+	$mail = mysqli_real_escape_string($db,trim($_POST['mail']));
+	$pass = mysqli_real_escape_string($db,trim($_POST['pass']));
+
+	$getPass = mysqli_query($db,"SELECT Losenord FROM Anvandare WHERE Epost='$mail'");
+	$getPass2 = mysqli_fetch_assoc($getPass);
+	$sqlPass = $getPass2['Losenord'];
+
+	$getSalt = mysqli_query($db,"SELECT Salt FROM Anvandare WHERE Epost='$mail'");
+	$getSalt2 = mysqli_fetch_assoc($getSalt);
+	$sqlSalt = $getSalt2['Salt'];
+
+	$getUserName = mysqli_query($db,"SELECT Anvandar_Namn FROM Anvandare WHERE Epost='$mail'");
+	$getUserName2 = mysqli_fetch_assoc($getUserName);
+	$sqlUserName = $getUserName2['Anvandar_Namn'];
+
+	$compare = sha1($sqlSalt . $_POST['pass']);
+
+	if ($sqlPass == $compare) {
+		$_SESSION["username"] = $sqlUserName;
+		$_SESSION["mail"] = $mail; 
+		header ("location: start.php"); 
+	}
+
+	else {
+		echo "Fel lösenord eller mail. Du skickas tillbaka till login.";
+		session_destroy();
+		header("Refresh: 3; url=login.html");
+
+	}
 
 
-$result = mysqli_query($db, $sql);
-$getResult = mysqli_fetch_assoc($result);
-
-
-$db_password = $getResult['Losenord'];
-$db_salt = $getResult['Salt'];
-
-//jämföra det lagrade lösenordet med det användaren matar in
-$compare = hash('sha256', ($db_salt . $password));
-
-if ($compare == $db_password) 
-{
-	session_start();
-	$_SESSION['mail'] = $email;
-	header('Location: registration.html');
 }
-$db->close();
+else {
+	session_destroy();
+	header("location: login.html");
+}
+
+
 
 ?>
