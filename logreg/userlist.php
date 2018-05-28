@@ -43,28 +43,17 @@
                     echo "</tr>";
 
                 }
-
-                /*$email = mysqli_real_escape_string($db, $_POST['Epost']);
-                $sql = "DELETE * FROM Anvandare WHERE Epost = '$email'";
-               
-
-                if ($db->query($sql) === TRUE)
-                {
-                    echo "succes ta bort";
-                }
-                else
-                {
-                    echo "fel vid borttagning";
-                }
-
-                header('location: Userlist.php');
-                $db->close(); */
-
+                
                 ?>
         </table>
 
+   <form id="for" name="for" method="post" action="delprocess.php">
+         <p class= "delanv">Skriv in epost på den användare du önskar radera</p>
+        <p><textarea name="text" id="text" cols="40" rows="3"></textarea></p>
+        <p><input type="submit" name="submit" id="submit" value="Ta bort användare" class= "UserlistBtn"></p>
+   </form>
 
-   <p><input type="reset" name="rensa" id="rensa" value="Ta bort användare" class="UserlistBtn" ></p>
+    
  </body>
 
 </html>
