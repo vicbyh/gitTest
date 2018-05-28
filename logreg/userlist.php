@@ -14,7 +14,7 @@
            </div>
             <div class="sidenav">
               <a href="startAdmin.php">Start</a>
-              <a href="userlist.php">Kund Inställningar</a>
+              <a href="userlist.php">Kund- inställningar</a>
             </div>
             
 
