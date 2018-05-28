@@ -12,11 +12,11 @@
               <a href="../index.html">Logga ut</a>
               <a> <img src="../Bilder/header2.png" alt="logpic" id="logo"></a>
            </div>
-           <div class="sidenav">
-              <p> <a href="startAdmin.php">Start</a></p>
-              <p> <a href="userlist.php">Inställningar för kunder</a></p>
-              <p> <a href="AdminKonto.html">Admin konto</a></p>
+            <div class="sidenav">
+              <a href="startAdmin.php">Start</a>
+              <a href="userlist.php">Kund Inställningar</a>
             </div>
+            
 
         <img src="../Bilder/header2.png" alt="logpic" id="logo">
         <div class= "Textuserlist">     
