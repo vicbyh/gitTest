@@ -349,6 +349,11 @@ text-decoration: none;
     font-family: "Times New Roman", Times, serif;
 }
 
+.bildanv
+{
+    height: 10px;
+    max-width: 50px;
+}
 
 
 
