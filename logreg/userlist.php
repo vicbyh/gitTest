@@ -25,7 +25,7 @@ else {
             <div class="sidenav">
               <a href="startAdmin.php">Start</a>
               <a href="userlist.php">Kund- inställningar</a>
-              <a href="userlist.php">Att göra-listor</a>
+              <a href="alltodolists.php">Inspektera att göra-listor</a>
             </div>
             
         <div class= "Textuserlist">     
@@ -36,6 +36,7 @@ else {
         <table class= "Userlist">
                 <tr class="trlist">
                     <!--skapar kolumner för varje "rad" i databasen -->
+                    <th>Id</th>
                     <th>Användarnamn</th>
                     <th>Epost</th>
                     <th>Användartyp</th>
@@ -50,6 +51,7 @@ else {
                 while ($row = mysqli_fetch_assoc($sql)) 
                 {
                     echo "<tr>";
+                        echo "<td>".$row["Anvandar_ID"]."</td>";
                         echo "<td>".$row["Anvandar_Namn"]."</td>";
                         echo "<td>".$row["Epost"]."</td>";
                         echo "<td>".$row["Anvandar_Typ"]."</td>";

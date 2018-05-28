@@ -17,7 +17,7 @@ else {
          	<meta charset="UTF-8">
      </head>
      <body>
-           <title>Schema</title>
+           <title>Start Admin</title>
            <div class="navbar">
               <a href="../index.html">Logga ut</a>
               <a> <img src="../Bilder/header2.png" alt="logpic" id="logo"></a>
@@ -25,6 +25,7 @@ else {
            <div class="sidenav">
               <a href="startAdmin.php">Start</a>
               <a href="userlist.php">Kund- inställningar</a>
+              <a href="alltodolists.php">Inspektera att göra-listor</a>
             </div>
 
             <p class= "hello"> Hej och välkommen admin! </p>
