@@ -14,7 +14,6 @@
            <div class="sidenav">
               <a href="startAdmin.php">Start</a>
               <a href="userlist.php">Kund Inställningar</a>
-              <a href="AdminKonto.html">Admin konto</a>
             </div>
 
             <p class= "hello"> Hej och välkommen admin! </p>
