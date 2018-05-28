@@ -34,7 +34,7 @@ else {
         <form name="searchToDolistUsers" method="POST" action="alltodolists.php">
           <label for="listinput">Sök användares att göra-lista</label>
             <input type="text" placeholder="Ange ett användar-id" name="searchtdlist">
-            <input type="submit" value="Sök!" id="searchtdlist_Btn">
+            <input type="submit" value="Sök!" id="searchtdlist_Btn" name="submit_Btn">
         </form>
 
         <table class="listTree">
@@ -51,8 +51,10 @@ else {
     
     <tbody>
     <?php $i = 1; 
-        $search = mysqli_real_escape_string($db, trim($_POST['searchtdlist']));
-        $tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE Anvandar_ID='$search' ORDER BY Datum"); 
+        if (isset($_POST['submit_Btn'])){  
+            $search = mysqli_real_escape_string($db, trim($_POST['searchtdlist']));
+          }
+            $tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE Anvandar_ID='$search' ORDER BY Datum"); 
            
 
         while ($row = mysqli_fetch_array($tasks)) { ?>
