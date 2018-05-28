@@ -28,6 +28,9 @@ else {
             </div>
 
             <p class= "hello"> Hej och välkommen admin! </p>
+            <div class="bildanv">
+              <img src="../Bilder/admincool.gif" alt="nicepic" id= "underbild">
+            </div>  
 
           		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
           		<script src="logreg.js"></script>

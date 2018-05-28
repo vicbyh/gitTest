@@ -17,8 +17,6 @@
               <a href="userlist.php">Kund- inställningar</a>
             </div>
             
-
-        <img src="../Bilder/header2.png" alt="logpic" id="logo">
         <div class= "Textuserlist">     
         <h1>Lista över registrerade användare </h1>
         </div>
