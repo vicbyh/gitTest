@@ -342,6 +342,12 @@ text-decoration: none;
     width: 100%;
 
 }
+.hello
+{
+    text-align: left;
+    font-size: 30px;
+    font-family: "Times New Roman", Times, serif;
+}
 
 
 
