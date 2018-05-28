@@ -1,8 +1,8 @@
 body
 {
     background-image: url(../Bilder/students.jpeg);
+    background-repeat: repeat;
     background-size: 100% auto;
-    background-repeat: no-repeat;
 }
 h1
 {
