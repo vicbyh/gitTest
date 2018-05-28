@@ -66,8 +66,8 @@ else {
          <p class= "delanv">Skriv in epost på den användare du önskar modifiera och klicka på en av knapparna</p>
         <p><textarea name="text" id="text" cols="40" rows="3"></textarea></p>
         <p><input type="submit" name="submit" id="submit" value="Ta bort användare" class= "UserlistBtn"></p>
-        <p><input type="submit" name="submitAdmin" id="submitAdmin" value="Gör användare till admin" class= "UserlistBtn"></p>
-        <p><input type="submit" name="submitKund" id="submitKund" value="Gör användare till kund" class= "UserlistBtn"></p>
+        <p><input type="submit" name="submitAdmin" id="submitAdmin" value="Gör användare till admin" class= "changeBtn"></p>
+        <p><input type="submit" name="submitKund" id="submitKund" value="Gör användare till kund" class= "changeBtn"></p>
    </form>
 
     
