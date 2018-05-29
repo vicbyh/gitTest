@@ -1,5 +1,6 @@
 <?php
 session_start();
+/* Kontrollerar att man är inloggad som admin */
 if (isset($_SESSION["admin"])) { 
 $db = mysqli_connect('localhost', 'root', 'root', 'Studenthjalpen');
 }

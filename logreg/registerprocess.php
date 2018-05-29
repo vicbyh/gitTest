@@ -24,11 +24,12 @@ function createsalt(){
 $uniquesalt = createsalt();
 $hashedPass = sha1($uniquesalt . $pass);
 
-/* Gör så att man kan söka på  */
+/* Gör så att man kan söka om det finns en punkt efter @ */
 $mailafterat = substr($mail, stripos($mail, '@') +1);
 
 if (strlen($alias) >= 1 && strlen($mail) >= 1 && strlen($pass) >=1 && strpos($mail, '@') && strpos($mailafterat, '.') ) {
 
+// Hämtar nödvändig data från databasen
 	$testalias = mysqli_query($db,"SELECT Anvandar_Namn FROM Anvandare WHERE Anvandar_Namn='$alias'");
 	$testalias2 = mysqli_fetch_assoc($testalias);
 	$testaliasrow = $testalias2['Anvandar_Namn'];
@@ -36,6 +37,7 @@ if (strlen($alias) >= 1 && strlen($mail) >= 1 && strlen($pass) >=1 && strpos($ma
 	$testmail2 = mysqli_fetch_assoc($testmail);
 	$testmailrow = $testmail2['Epost'];
 
+/*Om användarnamnet och mailen man angett vid registreringen inte finns så registreras man annars får man ett felmeddelande */
 	if ($testmailrow=="" && $testaliasrow =="") {
 		$anvandarTyp = "Kund";
 		mysqli_query($db, "INSERT INTO Anvandare (Anvandar_Namn, Anvandar_Typ, Epost, Losenord, Salt) VALUES ('$alias', '$anvandarTyp', '$mail', '$hashedPass', '$uniquesalt')");

@@ -5,6 +5,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['mail']) && isset($_SESSION[
 
 
 $db = mysqli_connect('localhost', 'root', 'root', 'Studenthjalpen');
+/* Välkomnar den inloggade användaren med dess användarnamn */
 echo '<h1>Välkommen ' .  $_SESSION['username'] . '!</h1>';
 }
 
@@ -39,7 +40,7 @@ else {
 <h1>Start</h1>
 <div class="toDoToday">
   <h2>Att göra idag:<h2>
-<?php $i = 1;
+<?php $i = 1; /* Hämtar data från att göra listan och visar om man har någon aktivitet som ska göras samma dag på startsidan*/
 $todaysDate = date("d/m/Y");
 $tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE Datum='$todaysDate' AND Anvandar_ID='$userId' ORDER BY Tid");
 while ($row = mysqli_fetch_array($tasks)) { ?>

@@ -11,6 +11,7 @@ if (isset($_POST['submit'])) {
 	$datum = mysqli_real_escape_string($db, trim($_POST['datum']));
 	$kategori = mysqli_real_escape_string($db, trim($_POST['kategori']));
 	
+	/* Undersöker om datumet man angett är på rätt form */
 	function isItValidDate($datum) {
   		if(preg_match("/^(\d{2})\/(\d{2})\/(\d{4})$/", $datum, $matches)){
     		if(checkdate($matches[2], $matches[1], $matches[3])){
@@ -19,6 +20,7 @@ if (isset($_POST['submit'])) {
    		}
  	}
 
+ 	/* Undersöker om tiden man angett är på rätt form */
 	$checked = false;
     if (preg_match('/^\d{2}:\d{2}$/', $tid)) {
         if (preg_match("/(2[0-3]|[0][0-9]|1[0-9]):([0-5][0-9])/", $tid)) {
@@ -43,11 +45,11 @@ if (isset($_POST['submit'])) {
 	header('location: todolist.php');
 	}
 }
-
-if (isset($_GET['del_task'])) {
-	$id = $_GET['del_task'];
-	mysqli_query($db, "DELETE FROM Aktivitet WHERE Aktivitets_ID=$id");
-	header('location: todolist.php');}
+	/* Tar bort aktivitet från att göra listan om man klickat på "färdig" */
+	if (isset($_GET['del_task'])) {
+		$id = $_GET['del_task'];
+		mysqli_query($db, "DELETE FROM Aktivitet WHERE Aktivitets_ID=$id");
+		header('location: todolist.php');}
 
 	
 
@@ -74,10 +76,10 @@ if (isset($_GET['del_task'])) {
   <a href="links.php">Länkar</a>
 </div>
 			<div class="heading">
-		<h2><?php echo $_SESSION['username']; ?>s att göra-lista</h2>
+		<h2><?php /* Gör att göra listan mer personlig */ echo $_SESSION['username']; ?>s att göra-lista</h2>
 	</div>
 	<form method="POST" action="todolist.php" class="tdListForm">
-	<?php if (isset($errors)) { ?>
+	<?php /* Meddelar fel om sådant finns */ if (isset($errors)) { ?>
 		<p><?php echo $errors; ?></p>
 	<?php } ?>
 	
@@ -122,7 +124,7 @@ if (isset($_GET['del_task'])) {
 		</thead>
 		
 		<tbody>
-		<?php $i = 1; 
+		<?php $i = 1; /* Har man inte gjort en sökning visas att göra listan som vanligt */
 			if(!isset($_POST['filter'])) { 
 				$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE Anvandar_ID='$userId' ORDER BY Datum"); }
 				else {
@@ -130,7 +132,7 @@ if (isset($_GET['del_task'])) {
 					$searchDatum = mysqli_real_escape_string($db, trim(strtolower($_POST['searchDatum'])));
 					$searchTid = mysqli_real_escape_string($db, trim(strtolower($_POST['searchTid'])));
 					$searchKategori = mysqli_real_escape_string($db, trim(strtolower($_POST['searchKategori'])));
-
+						/* Går igenom alla möjliga kombinationer av ifyllda fält vid sökning */
 						if (!empty($searchTask) && empty($searchDatum) && empty($searchTid) && empty($searchKategori)){
 							$tasks = mysqli_query($db, "SELECT * FROM Aktivitet WHERE Anvandar_ID='$userId' AND LOWER(Aktivitets_Namn)='$searchTask'");
 						}
@@ -182,7 +184,7 @@ if (isset($_GET['del_task'])) {
 						}
 
 
-				} 
+				} /* Matar ut listan från databasen */
 				while ($row = mysqli_fetch_array($tasks)) { ?>
 				<tr>
 					<td><?php echo $i; ?></td>

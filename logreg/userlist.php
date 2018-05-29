@@ -42,7 +42,7 @@ else {
                     <th>Användartyp</th>
                 </tr>
    
-                <?php
+                <?php /* Matar ut en tabell med alla användare */ 
                 $db = mysqli_connect('localhost', 'root', 'root', 'Studenthjalpen');
                 $query = "SELECT * FROM Anvandare";
 
