@@ -24,16 +24,16 @@ else {
            </div>
             <div class="sidenav">
               <a href="startAdmin.php">Start</a>
-              <a href="userlist.php">Kund- inställningar</a>
-              <a href="alltodolists.php">Inspektera att göra-listor</a>
+              <a href="userlist.php">Användar- inställningar</a>
+              <a href="alltodolists.php">Inspektera Att-göra-listor</a>
             </div>
             
         <div class= "todouserlist">     
-        <h1>Lista över allas att göra-listor</h1>
+        <h1>Lista över allas Att-göra-listor</h1>
         </div>
         <form name="searchToDolistUsers" method="POST" action="alltodolists.php">
           <label for="listinput">Sök användares att göra-lista</label>
-            <input type="text" placeholder="Ange ett användar-id" name="searchtdlist">
+            <input type="text" placeholder="Ange ett Användar-id" name="searchtdlist">
             <input type="submit" value="Sök!" id="searchtdlist_Btn" name="submit_Btn">
         </form>
 

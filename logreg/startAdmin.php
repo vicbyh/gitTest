@@ -24,11 +24,11 @@ else {
            </div>
            <div class="sidenav">
               <a href="startAdmin.php">Start</a>
-              <a href="userlist.php">Kund- inställningar</a>
-              <a href="alltodolists.php">Inspektera att göra-listor</a>
+              <a href="userlist.php">Användar- inställningar</a>
+              <a href="alltodolists.php">Inspektera Att-göra-listor</a>
             </div>
 
-            <p class= "hello"> Hej och välkommen admin! </p>
+            <p class= "hello"> Hej och välkommen Tjänsteleverantör! </p>
             <div class="bildanv">
               <img src="../Bilder/admincool.gif" alt="nicepic" id= "underbild">
             </div>  

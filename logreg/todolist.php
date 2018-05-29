@@ -60,7 +60,7 @@ if (isset($_GET['del_task'])) {
  	<meta charset="UTF-8">
  </head>
  <body>
- <title>Att göra-lista</title>
+ <title>Att-göra-lista</title>
  <div class="navbar">
   <a href="logoutprocess.php">Logga ut</a>
   <a href="kontaktaoss.php">Kontakta oss</a>
@@ -69,12 +69,12 @@ if (isset($_GET['del_task'])) {
 	</div>
 <div class="sidenav">
   <a href="start.php">Start</a>
-  <a href="todolist.php">Att göra-lista</a>
+  <a href="todolist.php">Att-göra-lista</a>
   <a href="schema.php">Kalender</a>
   <a href="links.php">Länkar</a>
 </div>
 			<div class="heading">
-		<h2><?php echo $_SESSION['username']; ?>s att göra-lista</h2>
+		<h2><?php echo $_SESSION['username']; ?>s Att-göra-lista</h2>
 	</div>
 	<form method="POST" action="todolist.php" class="tdListForm">
 	<?php if (isset($errors)) { ?>
