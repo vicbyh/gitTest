@@ -2,7 +2,7 @@
 
 $db = mysqli_connect('localhost', 'root', 'root', 'Studenthjalpen');
 
-
+/* Namnet på denna variabel är lite missvisande eftersom den inte bara används till att ta bort användare.  */
 $delete = mysqli_real_escape_string($db, $_POST['text']);
 
 

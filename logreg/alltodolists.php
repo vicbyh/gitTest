@@ -58,7 +58,7 @@ else {
             
            
 
-        while ($row = mysqli_fetch_array($tasks)) { ?>
+          while ($row = mysqli_fetch_array($tasks)) { ?>
         <tr>
           <td><?php echo $i; ?></td>
           <td class="datumRow"><?php echo $row['Datum']; ?> </td>

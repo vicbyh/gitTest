@@ -9,6 +9,8 @@ if (isset($_POST['mail']) && isset($_POST['pass']) ) {
 	$mail = mysqli_real_escape_string($db,trim($_POST['mail']));
 	$pass = mysqli_real_escape_string($db,trim($_POST['pass']));
 
+	/*Hämtar all nödvändig data från databasen */
+
 	$getPass = mysqli_query($db,"SELECT Losenord FROM Anvandare WHERE Epost='$mail'");
 	$getPass2 = mysqli_fetch_assoc($getPass);
 	$sqlPass = $getPass2['Losenord'];
@@ -29,10 +31,11 @@ if (isset($_POST['mail']) && isset($_POST['pass']) ) {
 	$getAnvandarTyp2 = mysqli_fetch_assoc($getAnvandarTyp);
 	$sqlAnvandarTyp = $getAnvandarTyp2['Anvandar_Typ'];
 
+	/* $compare används för att jämföra det inskrivna lösenordet med lösenordet i databasen */
 	$compare = sha1($sqlSalt . $_POST['pass']);
 
 	if ($sqlPass == $compare) {
-
+		/* Om användaren är kund hamnar denne på den vanliga inloggningssidan. Är man admin hamnar man på en annan. */
 		if ($sqlAnvandarTyp == "Kund") { 
 			$_SESSION["username"] = $sqlUserName;
 			$_SESSION["mail"] = $mail; 

@@ -1,16 +1,16 @@
 
-/* The navigation bar */
+/* topp-menyn då man är inloggad. */
 .navbar {
     overflow: hidden;
     background-color: #D3D3D3;
-    position: fixed; /* Set the navbar to fixed position */
-    top: 0; /* Position the navbar at the top of the page */
-    width: 100%; /* Full width */
+    position: fixed; 
+    top: 0; /* Placerar menyn högst upp */
+    width: 100%; 
     left: 0px;
-    z-index: 2;
+    z-index: 2; /* Gör så att menyn aldrig täcks över */
 }
 
-/* Links inside the navbar */
+/* Länkar i menyn */
 .navbar a {
     float: right;
     display: block;
@@ -20,34 +20,33 @@
     text-decoration: none;
 }
 
-/* Change background on mouse-over */
+/* Ändrar utseende på länkarna då man håller musen över */
 .navbar a:hover {
     background: #ddd;
     color: black;
 }
-
+/* inställningar för loggan i topp-menyn */
 .navbar #logo{
-    position: fixed; /* Set the navbar to fixed position */
-    top: 3px; /* Position the navbar at the top of the page */
-     /* Full width */
+    position: fixed; 
+    top: 3px; 
      width:270px;
      left:173px;
 }
 
-/* The sidebar menu */
+/* Sid-menyn då man är inloggad */
 .sidenav {
-    height: 100%; /* Full-height: remove this if you want "auto" height */
-    width: 180px; /* Set the width of the sidebar */
-    position: fixed; /* Fixed Sidebar (stay in place on scroll) */ 
-    top: 0; /* Stay at the top */
+    height: 100%; 
+    width: 180px; 
+    position: fixed; /* Gör så att menyn stannar på sin plats då man scrollar */ 
+    top: 0; 
     left: 0;
-    background-color: #D3D3D3; /* Black */
+    background-color: #D3D3D3; 
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 20px;
     z-index:3;
 }
 
-/* The navigation menu links */
+/* Länkar på sidmenyn */
 .sidenav a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
@@ -56,14 +55,14 @@
     display: block;
 }
 
-/* When you mouse over the navigation links, change their color */
+/* Ändrar färg på sidmenyn då man håller musen över länkarna */
 .sidenav a:hover {
     color: #f1f1f1;
 }
 
-/* Style page content */
+
 .main {
-    margin-left: 160px; /* Same as the width of the sidebar */
+    margin-left: 160px; 
     padding: 0px 10px;
 }
 

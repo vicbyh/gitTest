@@ -1,5 +1,6 @@
 <?php
 	
+/* Så att det inte går att komma åt sidan då den inte behövs */	
 if (isset($_POST['alias']) && isset($_POST['mail']) && isset($_POST['pass'])) { 
 
 $db = mysqli_connect('localhost', 'root', 'root', 'Studenthjalpen');
@@ -23,6 +24,7 @@ function createsalt(){
 $uniquesalt = createsalt();
 $hashedPass = sha1($uniquesalt . $pass);
 
+/* Gör så att man kan söka på  */
 $mailafterat = substr($mail, stripos($mail, '@') +1);
 
 if (strlen($alias) >= 1 && strlen($mail) >= 1 && strlen($pass) >=1 && strpos($mail, '@') && strpos($mailafterat, '.') ) {
