@@ -62,7 +62,7 @@ if (isset($_POST['submit'])) {
  	<meta charset="UTF-8">
  </head>
  <body>
- <title>Att göra-lista</title>
+ <title>Att-göra-lista</title>
  <div class="navbar">
   <a href="logoutprocess.php">Logga ut</a>
   <a href="kontaktaoss.php">Kontakta oss</a>
@@ -71,12 +71,16 @@ if (isset($_POST['submit'])) {
 	</div>
 <div class="sidenav">
   <a href="start.php">Start</a>
-  <a href="todolist.php">Att göra-lista</a>
+  <a href="todolist.php">Att-göra-lista</a>
   <a href="schema.php">Kalender</a>
   <a href="links.php">Länkar</a>
 </div>
 			<div class="heading">
+<<<<<<< HEAD
 		<h2><?php /* Gör att göra listan mer personlig */ echo $_SESSION['username']; ?>s att göra-lista</h2>
+=======
+		<h2><?php echo $_SESSION['username']; ?>s Att-göra-lista</h2>
+>>>>>>> 2dd2ec31b8abaa7feb6a9c8e956d1e982a6e3d5a
 	</div>
 	<form method="POST" action="todolist.php" class="tdListForm">
 	<?php /* Meddelar fel om sådant finns */ if (isset($errors)) { ?>
