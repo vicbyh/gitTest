@@ -14,6 +14,7 @@ else {
  <head> 
     <title>Användar Lista</title>
     <link rel="stylesheet" href="logreg.css">
+    <link href="https://fonts.googleapis.com/css?family=Tajawal" rel="stylesheet">
     <meta charset="UTF-8">
  </head>
  <body>
