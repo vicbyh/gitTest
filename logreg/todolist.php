@@ -76,11 +76,7 @@ if (isset($_POST['submit'])) {
   <a href="links.php">Länkar</a>
 </div>
 			<div class="heading">
-<<<<<<< HEAD
-		<h2><?php /* Gör att göra listan mer personlig */ echo $_SESSION['username']; ?>s att göra-lista</h2>
-=======
 		<h2><?php echo $_SESSION['username']; ?>s Att-göra-lista</h2>
->>>>>>> 2dd2ec31b8abaa7feb6a9c8e956d1e982a6e3d5a
 	</div>
 	<form method="POST" action="todolist.php" class="tdListForm">
 	<?php /* Meddelar fel om sådant finns */ if (isset($errors)) { ?>

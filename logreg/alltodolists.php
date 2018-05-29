@@ -51,6 +51,7 @@ else {
     
     <tbody>
     <?php $i = 1; $tasks=''; 
+        /* om man som adming har gjort en sökning på ett användar-id matas dennes todolist ut */
         if (isset($_POST['submit_Btn'])){  
             $search = mysqli_real_escape_string($db, trim($_POST['searchtdlist']));
 
